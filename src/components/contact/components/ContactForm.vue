@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 
 import type { Contact } from '@/typings'
 
-const firstName = ref('')
-const lastName = ref('')
-const email = ref('')
-const message = ref('')
+const firstName: Ref<string> = ref('')
+const lastName: Ref<string> = ref('')
+const email: Ref<string> = ref('')
+const message: Ref<string> = ref('')
 
 const handleSubmit = () => {
   const contact: Contact = {

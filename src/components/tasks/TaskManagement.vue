@@ -44,4 +44,3 @@ const handleDelete = (task: Task) => {
     </div>
   </section>
 </template>
-@/stores/taskStore @/typings

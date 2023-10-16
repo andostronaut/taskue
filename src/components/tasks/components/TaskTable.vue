@@ -84,4 +84,3 @@ const handleDelete = (task: Task) => {
     <h1 class="flex justify-center w-full py-6 mx-auto text-gray-700">No tasks 😢</h1>
   </div>
 </template>
-@/typings
