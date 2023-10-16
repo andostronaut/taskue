@@ -2,14 +2,16 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useTaskStore = defineStore('task', () => {
-  const tasks: Ref<Array<{ id: number; name: string }>> = ref([])
+import type { Task } from '@typings/task'
 
-  function store(task: { id: number; name: string }) {
+export const useTaskStore = defineStore('task', () => {
+  const tasks: Ref<Task[]> = ref([])
+
+  function store(task: Task) {
     tasks.value.push(task)
   }
 
-  function remove(task: { id: number; name: string }) {}
+  function remove(task: Task) {}
 
   return { tasks, store, remove }
 })
