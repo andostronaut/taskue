@@ -39,4 +39,3 @@ const taskCount = computed(() => {
     </div>
   </section>
 </template>
-@/typings

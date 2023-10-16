@@ -7,11 +7,9 @@ import ContactForm from '@components/contact/components/ContactForm.vue'
     <div class="container px-6 py-12 mx-auto">
       <div>
         <p class="font-medium text-teal-500">Contact us</p>
-
         <h1 class="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl">
           Chat to our friendly team
         </h1>
-
         <p class="mt-3 text-gray-500">
           We’d love to hear from you. Please fill out this form or shoot us an email.
         </p>

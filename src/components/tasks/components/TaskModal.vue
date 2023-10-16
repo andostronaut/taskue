@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 import { VueFinalModal } from 'vue-final-modal'
 import { v4 as uuidv4 } from 'uuid'
 
 import type { Task } from '@/typings'
 
-const name = ref('')
-const description = ref('')
+const name: Ref<string> = ref('')
+const description: Ref<string> = ref('')
 
 const emit = defineEmits<{
   (e: 'confirm', params: Task): void
@@ -98,4 +99,3 @@ const handleSubmit = () => {
   height: 50%;
 }
 </style>
-@/typings
