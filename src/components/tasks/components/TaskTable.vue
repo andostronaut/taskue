@@ -1,7 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from 'vue'
+
+import type { Task } from '@typings/task'
+
+const props = defineProps<{
+  tasks: Task[]
+}>()
+
+const hasTasks = computed(() => {
+  return Array.isArray(props.tasks) && props.tasks.length !== 0
+})
+</script>
 
 <template>
-  <table class="min-w-full divide-y divide-gray-200">
+  <table class="min-w-full divide-y divide-gray-200" v-if="hasTasks">
     <thead class="bg-gray-50">
       <tr>
         <th
@@ -10,14 +22,12 @@
         >
           Name
         </th>
-
         <th
           scope="col"
           class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
         >
           Status
         </th>
-
         <th
           scope="col"
           class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
@@ -27,27 +37,29 @@
       </tr>
     </thead>
     <tbody class="bg-white divide-y divide-gray-200">
-      <tr>
+      <tr v-for="task in tasks" :key="task.id">
         <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
           <div>
-            <h2 class="font-medium text-gray-800">Catalog</h2>
-            <p class="text-sm font-normal text-gray-600">catalogapp.io</p>
+            <h2 class="font-medium text-gray-800">{{ task.name }}</h2>
           </div>
         </td>
         <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
           <div
             class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60"
           >
-            To Do
+            {{ task.status }}
           </div>
         </td>
         <td class="px-4 py-4 text-sm whitespace-nowrap">
           <div>
-            <h4 class="text-gray-700">Content curating app</h4>
-            <p class="text-gray-500">Brings all your news into one place</p>
+            <h4 class="text-gray-700">{{ task.description }}</h4>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <div v-else>
+    <h1 class="flex justify-center w-full py-6 mx-auto text-gray-700">No tasks 😢</h1>
+  </div>
 </template>

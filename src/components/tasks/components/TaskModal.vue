@@ -1,14 +1,31 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { VueFinalModal } from 'vue-final-modal'
+import { v4 as uuidv4 } from 'uuid'
+
+import type { Task } from '@typings/task'
 
 const name = ref('')
 const description = ref('')
 
 const emit = defineEmits<{
-  (e: 'confirm'): void
+  (e: 'confirm', params: Task): void
   (e: 'cancel'): void
 }>()
+
+const handleSubmit = () => {
+  const task: Task = {
+    id: uuidv4(),
+    name: name.value,
+    description: description.value,
+    status: 'to-do'
+  }
+
+  emit('confirm', task)
+
+  name.value = ''
+  description.value = ''
+}
 </script>
 
 <template>
@@ -21,7 +38,7 @@ const emit = defineEmits<{
     <section class="w-full h-full p-6 mx-auto bg-white rounded-md shadow-md">
       <h2 class="text-lg font-semibold text-gray-700 capitalize">Add Task</h2>
 
-      <form @submit.prevent="emit('confirm')">
+      <form @submit.prevent="handleSubmit">
         <div class="flex flex-col gap-6 mt-4">
           <div>
             <label class="text-gray-700" for="name">Name</label>
