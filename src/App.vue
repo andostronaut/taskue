@@ -7,7 +7,7 @@ import HeaderComponent from '@components/common/HeaderComponent.vue'
 <template>
   <HeaderComponent />
 
-  <main class="container mx-auto">
+  <main class="container mx-auto mt-12">
     <RouterView />
   </main>
 </template>
