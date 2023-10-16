@@ -7,9 +7,17 @@ const props = defineProps<{
   tasks: Task[]
 }>()
 
+const emit = defineEmits<{
+  (e: 'delete', params: Task): void
+}>()
+
 const hasTasks = computed(() => {
   return Array.isArray(props.tasks) && props.tasks.length !== 0
 })
+
+const handleDelete = (task: Task) => {
+  emit('delete', task)
+}
 </script>
 
 <template>
@@ -34,6 +42,12 @@ const hasTasks = computed(() => {
         >
           Description
         </th>
+        <th
+          scope="col"
+          class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
+        >
+          Actions
+        </th>
       </tr>
     </thead>
     <tbody class="bg-white divide-y divide-gray-200">
@@ -53,6 +67,13 @@ const hasTasks = computed(() => {
         <td class="px-4 py-4 text-sm whitespace-nowrap">
           <div>
             <h4 class="text-gray-700">{{ task.description }}</h4>
+          </div>
+        </td>
+        <td class="px-4 py-4 text-sm whitespace-nowrap">
+          <div class="flex">
+            <button @click="handleDelete(task)" class="px-2 py-2 text-white bg-red-500 rounded-md">
+              Delete
+            </button>
           </div>
         </td>
       </tr>

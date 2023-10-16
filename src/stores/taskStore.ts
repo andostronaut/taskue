@@ -11,7 +11,13 @@ export const useTaskStore = defineStore('task', () => {
     tasks.value.push(task)
   }
 
-  function remove(task: Task) {}
+  function remove(task: Task) {
+    const idx = tasks.value.findIndex((t: Task) => {
+      return t.id === task.id
+    })
+
+    tasks.value.splice(idx, 1)
+  }
 
   return { tasks, store, remove }
 })
