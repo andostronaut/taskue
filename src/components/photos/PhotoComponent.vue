@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import type { Ref } from 'vue'
+import { isAxiosError } from 'axios'
 
 import type { Photo } from '@/typings'
 import { fetchPhotos } from '@services/photoService'
@@ -19,7 +20,15 @@ onMounted(() => {
       photos.value = data
     })
     .catch((err) => {
-      console.log(err)
+      if (isAxiosError(err)) {
+        if (err.code === 'ERR_NETWORK') {
+          console.log('An error occured with your internet connection...')
+        } else if (err.code === 'ERR_CANCELED') {
+          console.log('An error occured, the operation has been canceled...')
+        } else {
+          console.log('An error occured,', err.message)
+        }
+      }
     })
     .finally(() => {
       isLoading.value = false
