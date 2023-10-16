@@ -1,5 +1,6 @@
 # Taskue
 
+![build](https://github.com/iamando/commitizen-cli/workflows/build/badge.svg)
 ![license](https://img.shields.io/github/license/iamando/cocli?color=success)
 
 Taskue is a user-friendly task management app built using Vue.js and powered by Pinia for state management. 🌱📝✨
