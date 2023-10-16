@@ -12,6 +12,8 @@
       "@router/*": ["./src/router/*"],
       "@stores/*": ["./src/stores/*"],
       "@pages/*": ["./src/pages/*"],
-    }
+      "@typings/*": ["./src/typings/*"]
+    },
+    "typeRoots": ["./src/types/**/*.d.ts", "node_modules/@types"]
   }
 }
