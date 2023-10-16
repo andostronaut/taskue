@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { VueFinalModal } from 'vue-final-modal'
 import { v4 as uuidv4 } from 'uuid'
 
-import type { Task } from '@typings/task'
+import type { Task } from '@/typings'
 
 const name = ref('')
 const description = ref('')
@@ -98,3 +98,4 @@ const handleSubmit = () => {
   height: 50%;
 }
 </style>
+@/typings
