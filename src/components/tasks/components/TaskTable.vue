@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import type { Task } from '@typings/task'
+import type { Task } from '@/typings'
 
 const props = defineProps<{
   tasks: Task[]
@@ -84,3 +84,4 @@ const handleDelete = (task: Task) => {
     <h1 class="flex justify-center w-full py-6 mx-auto text-gray-700">No tasks 😢</h1>
   </div>
 </template>
+@/typings

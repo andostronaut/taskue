@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useModal } from 'vue-final-modal'
 
-import type { Task } from '@typings/task'
+import type { Task } from '@/typings'
 
 import TableHeader from '@components/tasks/components/TableHeader.vue'
 import TaskTable from '@components/tasks/components/TaskTable.vue'
@@ -44,4 +44,4 @@ const handleDelete = (task: Task) => {
     </div>
   </section>
 </template>
-@/stores/taskStore
+@/stores/taskStore @/typings

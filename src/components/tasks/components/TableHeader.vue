@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import type { Task } from '@typings/task'
+import type { Task } from '@/typings'
 
 const props = defineProps<{
   tasks: Task[]
@@ -39,3 +39,4 @@ const taskCount = computed(() => {
     </div>
   </section>
 </template>
+@/typings

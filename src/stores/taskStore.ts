@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
 
-import type { Task } from '@typings/task'
+import type { Task } from '@/typings'
 
 export const useTaskStore = defineStore('task', () => {
   const tasks: Ref<Task[]> = ref([])
