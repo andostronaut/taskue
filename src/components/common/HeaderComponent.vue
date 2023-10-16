@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <nav class="flex items-center justify-between p-6 mb-12 bg-white border-b-2">
-    <div class="text-xl font-bold text-teal-600">🌱 TASKUE</div>
+    <RouterLink to="/" class="text-xl font-bold text-teal-600">🌱 TASKUE</RouterLink>
 
     <div class="flex items-center justify-center text-gray-600 capitalize">
       <RouterLink

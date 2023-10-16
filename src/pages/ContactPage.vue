@@ -1,9 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ContactComponent from '@components/contact/ContactComponent.vue'
+</script>
 
 <template>
-  <section>
-    <div>
-      <h1>Contact Page</h1>
-    </div>
-  </section>
+  <ContactComponent />
 </template>
