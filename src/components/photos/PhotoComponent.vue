@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import type { Ref } from 'vue'
 import { isAxiosError } from 'axios'
+import { useNotification } from '@kyvg/vue3-notification'
 
 import type { Photo } from '@/typings'
 import { fetchPhotos } from '@services/photoService'
@@ -11,6 +12,8 @@ import PhotoCard from '@components/photos/components/PhotoCard.vue'
 
 const photos: Ref<Photo[]> = ref([])
 const isLoading: Ref<boolean> = ref(false)
+
+const notification = useNotification()
 
 onMounted(() => {
   isLoading.value = true
@@ -22,9 +25,15 @@ onMounted(() => {
     .catch((err) => {
       if (isAxiosError(err)) {
         if (err.code === 'ERR_NETWORK') {
-          console.log('An error occured with your internet connection...')
+          notification.notify({
+            title: 'An error occured with your internet connection...',
+            type: 'error'
+          })
         } else if (err.code === 'ERR_CANCELED') {
-          console.log('An error occured, the operation has been canceled...')
+          notification.notify({
+            title: 'An error occured, the operation has been canceled...',
+            type: 'error'
+          })
         } else {
           console.log('An error occured,', err.message)
         }

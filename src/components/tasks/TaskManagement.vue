@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useModal } from 'vue-final-modal'
+import { useNotification } from '@kyvg/vue3-notification'
 
 import type { Task } from '@/typings'
 
@@ -10,12 +11,14 @@ import TaskModal from '@components/tasks/components/TaskModal.vue'
 import { useTaskStore } from '@stores/taskStore'
 
 const taskStore = useTaskStore()
+const notification = useNotification()
 
 const { open, close } = useModal({
   component: TaskModal,
   attrs: {
     onConfirm(task: Task) {
       taskStore.store(task)
+      notification.notify({ title: 'Task created 🌱', type: 'success' })
       close()
     },
     onCancel() {
@@ -26,6 +29,7 @@ const { open, close } = useModal({
 
 const handleDelete = (task: Task) => {
   taskStore.remove(task)
+  notification.notify({ title: 'Task deleted 🗑️', type: 'success' })
 }
 </script>
 

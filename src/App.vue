@@ -13,4 +13,5 @@ import HeaderComponent from '@components/common/HeaderComponent.vue'
   </main>
 
   <ModalsContainer />
+  <notifications position="top center" width="100%" />
 </template>
