@@ -20,6 +20,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // import specific icons
 import { faPlus, faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
 
+// import vue notification
+import Notifications from '@kyvg/vue3-notification'
+
 const app = createApp(App)
 
 // add icons to the library
@@ -30,6 +33,7 @@ library.add(faXmark)
 // use plugins
 app.use(createPinia())
 app.use(createVfm())
+app.use(Notifications)
 app.use(router)
 
 app.component('font-awesome-icon', FontAwesomeIcon)

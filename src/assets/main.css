@@ -4,6 +4,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* Loader */
 .lds-ellipsis {
   display: inline-block;
   position: relative;
@@ -66,4 +67,14 @@ body {
   100% {
     transform: translate(24px, 0);
   }
+}
+
+/* Notification */
+.vue-notification {
+  margin: 0 !important;
+  padding: 20px 15px !important;
+  border-left: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  text-align: center !important;
 }
