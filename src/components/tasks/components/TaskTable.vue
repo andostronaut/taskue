@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 
 import type { Task } from '@/typings'
+import TableComponent from '@components/common/TableComponent.vue'
 
 const props = defineProps<{
   tasks: Task[]
@@ -21,8 +22,8 @@ const handleDelete = (task: Task) => {
 </script>
 
 <template>
-  <table class="min-w-full divide-y divide-gray-200" v-if="hasTasks">
-    <thead class="bg-gray-50">
+  <TableComponent v-if="hasTasks">
+    <template #table-header>
       <tr>
         <th
           scope="col"
@@ -49,8 +50,9 @@ const handleDelete = (task: Task) => {
           Actions
         </th>
       </tr>
-    </thead>
-    <tbody class="bg-white divide-y divide-gray-200">
+    </template>
+
+    <template #table-body>
       <tr v-for="task in tasks" :key="task.id">
         <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
           <div>
@@ -77,8 +79,8 @@ const handleDelete = (task: Task) => {
           </div>
         </td>
       </tr>
-    </tbody>
-  </table>
+    </template>
+  </TableComponent>
 
   <div v-else>
     <h1 class="flex justify-center w-full py-6 mx-auto text-gray-700">No tasks 😢</h1>
