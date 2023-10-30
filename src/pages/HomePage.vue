@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TaskManagement from '@components/tasks/TaskManagement.vue'
-import PhotoComponent from '@components/photos/PhotoComponent.vue'
+import TodosComponent from '@components/todos/TodosComponent.vue'
 </script>
 
 <template>
@@ -24,6 +24,6 @@ import PhotoComponent from '@components/photos/PhotoComponent.vue'
     </h1>
 
     <hr class="py-4 mt-14" />
-    <PhotoComponent />
+    <TodosComponent />
   </div>
 </template>
