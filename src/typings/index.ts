@@ -12,10 +12,9 @@ export type Contact = {
   message: string
 }
 
-export type Photo = {
-  albumId: number
+export type Todo = {
+  userId: number
   id: number
   title: string
-  url: string
-  thumbnailUrl: string
+  completed: boolean
 }
