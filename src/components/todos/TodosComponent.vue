@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import type { Ref } from 'vue'
-import { isAxiosError } from 'axios'
+import { AxiosError, isAxiosError } from 'axios'
 import { useNotification } from '@kyvg/vue3-notification'
 
-import type { Photo } from '@/typings'
-import { fetchPhotos } from '@services/photoService'
+import type { Todo } from '@/typings'
+import { fetchTodos } from '@services/todoService'
 
 import LoaderComponent from '@components/common/LoaderComponent.vue'
 import TodoComponent from '@components/todos/components/TodoComponent.vue'
+import TableComponent from '@components/common/TableComponent.vue'
 
-const photos: Ref<Photo[]> = ref([])
+const todos: Ref<Todo[]> = ref([])
 const isLoading: Ref<boolean> = ref(false)
 
 const notification = useNotification()
@@ -18,11 +19,11 @@ const notification = useNotification()
 onMounted(() => {
   isLoading.value = true
 
-  fetchPhotos()
-    .then(({ data }) => {
-      photos.value = data
+  fetchTodos()
+    .then(({ data }: { data: Todo[] }) => {
+      todos.value = data
     })
-    .catch((err) => {
+    .catch((err: AxiosError) => {
       if (isAxiosError(err)) {
         if (err.code === 'ERR_NETWORK') {
           notification.notify({
@@ -51,7 +52,13 @@ onMounted(() => {
       <LoaderComponent />
     </div>
     <div class="flex flex-wrap justify-center mx-auto" v-else>
-      <TodoComponent v-for="photo in photos" :key="photo.id" :photo="photo" />
+      <TableComponent>
+        <template #table-header> </template>
+
+        <template #table-body> </template>
+      </TableComponent>
+      <TodoComponent v-for="todo in todos" :key="todo.id" :todo="todo" />
     </div>
   </section>
 </template>
+@/services/todoService
