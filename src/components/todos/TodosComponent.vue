@@ -53,12 +53,10 @@ onMounted(() => {
     </div>
     <div class="flex flex-wrap justify-center mx-auto" v-else>
       <TableComponent>
-        <template #table-header> </template>
-
-        <template #table-body> </template>
+        <template #table-header></template>
+        <template #table-body></template>
       </TableComponent>
       <TodoComponent v-for="todo in todos" :key="todo.id" :todo="todo" />
     </div>
   </section>
 </template>
-@/services/todoService
